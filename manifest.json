@@ -6,10 +6,19 @@
 
   "description": "Blocks YouTube Shorts from appearing on YouTube.",
 
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*"],
-      "js": ["ytshortsblocker.js"]
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "ytshortsblocker.js"
+      ]
     }
   ]
 
