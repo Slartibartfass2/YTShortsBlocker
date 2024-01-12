@@ -1,5 +1,4 @@
 {
-
   "manifest_version": 2,
   "name": "YTShortsBlocker",
   "version": "1.0",
@@ -7,8 +6,11 @@
   "description": "Blocks YouTube Shorts from appearing on YouTube.",
 
   "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
     "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png"
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
   },
 
   "content_scripts": [
@@ -21,5 +23,4 @@
       ]
     }
   ]
-
 }
