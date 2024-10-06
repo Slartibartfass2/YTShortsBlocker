@@ -7,21 +7,27 @@ function hideShortsButtons(sections) {
             continue;
         }
 
-        if (aElements[0].title == "Shorts") {
+        if (aElements[0].title.toLowerCase() == "shorts") {
             section.style.display = "none";
         }
     }
 }
 
 function hideShortsButtonsInSidebar() {
-    let shortButtonSectionsMaximized = document.getElementsByTagName("ytd-guide-entry-renderer");
+    let shortButtonSectionsMaximized = document.getElementsByTagName(
+        "ytd-guide-entry-renderer"
+    );
     hideShortsButtons(shortButtonSectionsMaximized);
-    let shortButtonSectionsMinimized = document.getElementsByTagName("ytd-mini-guide-entry-renderer");
+    let shortButtonSectionsMinimized = document.getElementsByTagName(
+        "ytd-mini-guide-entry-renderer"
+    );
     hideShortsButtons(shortButtonSectionsMinimized);
 }
 
 function hideShortsSectionsOnHomepage() {
-    let shortsSections = document.getElementsByTagName("ytd-rich-section-renderer");
+    let shortsSections = document.getElementsByTagName(
+        "ytd-rich-section-renderer"
+    );
     for (const section of shortsSections) {
         section.style.display = "none";
     }
@@ -42,22 +48,32 @@ function hideShortsVideosInFeed() {
 }
 
 function hideShortsVideosInSearchResults() {
-    let shortsSections = document.getElementsByTagName("ytd-reel-shelf-renderer")
+    let shortsSections = document.getElementsByTagName(
+        "ytd-reel-shelf-renderer"
+    );
     for (const section of shortsSections) {
         section.style.display = "none";
     }
 }
 
 function hideShortsTabOnAccountPage() {
-    let tabs = document.getElementsByTagName("tp-yt-paper-tab");
+    let tabs = document.getElementsByTagName("yt-tab-shape");
     for (const tab of tabs) {
         let divs = tab.getElementsByTagName("div");
         for (const div of divs) {
-            if (div.innerText == "SHORTS") {
+            if (div.innerText.toLowerCase() == "shorts") {
                 tab.style.display = "none";
                 break;
             }
         }
+    }
+}
+
+function hideShortsPage() {
+    if (!window.location.pathname.startsWith("/shorts")) return;
+    const shortsContainer = document.getElementById("shorts-container");
+    if (shortsContainer) {
+        shortsContainer.style.display = "none";
     }
 }
 
@@ -68,4 +84,5 @@ setInterval(function () {
     hideShortsVideosInFeed();
     hideShortsVideosInSearchResults();
     hideShortsTabOnAccountPage();
+    hideShortsPage();
 }, 1000);
