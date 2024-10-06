@@ -1,26 +1,36 @@
 {
-  "manifest_version": 2,
-  "name": "YTShortsBlocker",
-  "version": "1.0",
+    "manifest_version": 3,
+    "name": "YTShortsBlocker",
+    "version": "1.1",
 
-  "description": "Blocks YouTube Shorts from appearing on YouTube.",
+    "description": "Blocks YouTube Shorts from appearing on YouTube.",
 
-  "icons": {
-    "16": "icons/icon-16.png",
-    "32": "icons/icon-32.png",
-    "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png",
-    "128": "icons/icon-128.png"
-  },
+    "permissions": [],
+    "host_permissions": ["https://www.youtube.com/*"],
+    "background": {
+        "chromium:service_worker": "background.js",
+        "firefox:scripts": ["background.js"]
+    },
+    "icons": {
+        "16": "icons/icon-16.png",
+        "32": "icons/icon-32.png",
+        "48": "icons/icon-48.png",
+        "96": "icons/icon-96.png",
+        "128": "icons/icon-128.png"
+    },
 
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.youtube.com/*"
-      ],
-      "js": [
-        "ytshortsblocker.js"
-      ]
+    "content_scripts": [
+        {
+            "matches": ["https://www.youtube.com/*"],
+            "js": ["content.js"],
+            "css": ["content.css"]
+        }
+    ],
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{59479247-521a-4251-afb2-6314b6500954}",
+            "strict_min_version": "109.0"
+        }
     }
-  ]
 }
